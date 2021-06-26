@@ -247,6 +247,13 @@ public class TableEditor extends BaseEditor {
 			return;
 		}
 
+		for(int i = 0; i < editingView.getAttributeTableModel().getRowCount(); i++) {
+			if (editingView.getAttributesTable().getValueAt(i, 1) == null) {
+				MessagesHelper.displayErrorMessage(this, "Attribute Data Type Must Be Selected!");
+				return;
+			}
+		}
+
 		if (tableBindingInfo.validate().isEmpty()) {
 			if (editingView.getAttributeTableModel().getRowCount() == 0) {
 				MessagesHelper.displayErrorMessage(this, getResourceHelper().getText(
